@@ -1,7 +1,6 @@
 import { Stack, Box, Avatar, Typography } from '@mui/material';
 import MailIcon from '@mui/icons-material/Mail';
 import SchoolIcon from '@mui/icons-material/School';
-import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CallIcon from '@mui/icons-material/Call';
 const FolderList = ({ text, textMuted, bg }) => {
@@ -36,7 +35,7 @@ const FolderList = ({ text, textMuted, bg }) => {
     },
   ];
 
-  const handleRedirect = (url) => {
+  const handleRedirect = (url: any) => {
     if (url && url !== '#') {
       window.open(url, '_blank', 'noopener,noreferrer');
     }

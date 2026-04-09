@@ -2,7 +2,16 @@ import BorderGlow from './comp/BorderGlow';
 import { Stack, Paper, Typography, Box, Button, Grid } from '@mui/material';
 import { useState } from 'react';
 import "./Gen.css"
-const DataPage = ({ bg1, bg2, textColor, highText }) => {
+// Example for MainInfo.tsx
+interface MainInfoProps {
+  text: string;
+  textMuted: string;
+  highText?: string; // Use ? if it's optional
+  textColor?: string;
+  bg1?: string;
+}
+
+const MainInfo({ text, textMuted }: MainInfoProps) => {
   const [state, setState] = useState(0);
   const items = [
     "hello",
@@ -93,9 +102,8 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
           height="315"
           src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&modestbranding=1"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
+        >
         </iframe>
       )
     }
