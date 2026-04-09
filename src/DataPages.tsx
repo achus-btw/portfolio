@@ -2,38 +2,36 @@ import BorderGlow from './comp/BorderGlow';
 import { Stack, Paper, Typography, Box, Button, Grid } from '@mui/material';
 import { useState } from 'react';
 import "./Gen.css"
-// Example for MainInfo.tsx
+
 interface MainInfoProps {
   text: string;
   textMuted: string;
-  highText?: string; // Use ? if it's optional
+  highText?: string;
   textColor?: string;
   bg1?: string;
 }
 
-const MainInfo({ text, textMuted }: MainInfoProps) => {
+// Added the "=" here and destructured the missing variables
+const DataPage = ({ text, textMuted, highText, textColor, bg1 }: MainInfoProps) => {
   const [state, setState] = useState(0);
+
   const items = [
-    "hello",
-    "hi",
-    "incredible"
-  ]
+    "Embedded Systems",
+    "Digital Signal Processing",
+    "Robotics"
+  ];
+
   const pages = [
     {
       id: 0,
-      'title': "About Me",
-      'data': (
+      title: "About Me",
+      data: (
         <>
-          <Stack direction={"row"}>
+          <Stack direction={"row"} spacing={2}>
             <Typography sx={{ color: textColor, width: "70%" }}>
               I am an Electronics and Communication Engineering student at the College of Engineering,
-              Trivandrum, with a deep-seated interest in the intersection of low-level hardware and high-performance software.<br />
-              <br />My work primarily focuses on embedded systems, digital signal processing, and robotics, ranging from
-              designing custom STM32-based flight controllers to building 8-bit CPU simulators from scratch.<br />
-              A dedicated Linux power user and Neovim enthusiast, I enjoy optimizing development environments and exploring the
-              intricacies of kernel configurations. I am currently bridging the gap between theory and application by developing
-              indigenous technology for defense research, with a specific focus on autonomous flight dynamics and mesh communication
-              systems.<br /><br />
+              Trivandrum...<br />
+              <br />My work primarily focuses on embedded systems, digital signal processing, and robotics...<br />
             </Typography>
             <Box sx={{ width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Typography
@@ -43,27 +41,20 @@ const MainInfo({ text, textMuted }: MainInfoProps) => {
                   background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  textAlign: 'center', // Centers the text lines
+                  textAlign: 'center',
                 }}
               >
                 Innovating<br />Rebuilding<br />Exploring New Frontiers
               </Typography>
             </Box>
           </Stack>
-          <Typography variant='h5' sx={{ color: highText, width: "70%" }}>
+          <Typography variant='h5' sx={{ color: highText, width: "70%", mt: 2 }}>
             Fields I Dabble In
           </Typography>
           <Grid container spacing={2}>
             {items.map((item, index) => (
-              <Grid
-                key={index}
-                size={{ xs: 12, sm: 6, md: 4 }}
-                sx={{ display: 'flex' }} // Forces the Grid cell to behave like a flex container
-              >
-                <BorderGlow
-                  className="full-width-glow" // Use a class to target the width
-                  style={{ width: '100%' }}    // Pass width directly to the cardRef div
-                >
+              <Grid key={index} size={{ xs: 12, sm: 6, md: 4 }} sx={{ display: 'flex' }}>
+                <BorderGlow style={{ width: '100%' }}>
                   <Box
                     sx={{
                       width: '100%',
@@ -88,29 +79,29 @@ const MainInfo({ text, textMuted }: MainInfoProps) => {
     },
     {
       id: 1,
-      'title': "Resume",
-      'data': (
-        <Typography>go back</Typography>
-      )
+      title: "Resume",
+      data: <Typography sx={{ color: textColor }}>Resume Content Goes Here</Typography>
     },
     {
       id: 2,
-      'title': "video",
-      'data': (
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&modestbranding=1"
-          title="YouTube video player"
-          allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        >
-        </iframe>
+      title: "Video",
+      data: (
+        <Box sx={{ width: '100%', aspectRatio: '16/9' }}>
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&modestbranding=1"
+            title="YouTube video player"
+            style={{ border: 0, borderRadius: '8px' }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          />
+        </Box>
       )
     }
-  ]
+  ];
+
   return (
     <Paper
-
       elevation={3}
       sx={{
         bgcolor: bg1,
@@ -119,10 +110,7 @@ const MainInfo({ text, textMuted }: MainInfoProps) => {
         flexGrow: 3,
       }}
     >
-      <Stack
-        direction={'row'}
-        sx={{ gap: 2 }}
-      >
+      <Stack direction={'row'} sx={{ gap: 2 }}>
         <Typography variant='h3' sx={{ color: highText }}>
           {pages[state].title}
         </Typography>
@@ -138,26 +126,14 @@ const MainInfo({ text, textMuted }: MainInfoProps) => {
             borderRadius: 4
           }}
           divider={
-            <Box
-              sx={{
-                width: '2px',
-                bgcolor: 'rgba(255,255,255,0.4)',
-                alignSelf: 'center',
-                height: '30px',
-                my: 1
-              }}
-            />
+            <Box sx={{ width: '2px', bgcolor: 'rgba(255,255,255,0.4)', alignSelf: 'center', height: '30px', my: 1 }} />
           }
         >
           {pages.map((item) => (
             <Button
               key={item.id}
-              sx={{
-                color: 'white',
-                flex: 1,
-                py: 1.5
-              }}
-              onClick={() => { setState(item.id) }}
+              sx={{ color: 'white', flex: 1, py: 1.5 }}
+              onClick={() => setState(item.id)}
             >
               {item.title}
             </Button>
@@ -166,10 +142,8 @@ const MainInfo({ text, textMuted }: MainInfoProps) => {
       </Stack>
       <Box sx={{ width: "10%", height: '5px', bgcolor: 'white', mt: 3, mb: 3, borderRadius: 5 }} />
       {pages[state].data}
-
-
-
     </Paper>
-  )
+  );
 }
+
 export default DataPage;
