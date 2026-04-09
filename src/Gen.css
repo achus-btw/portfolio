@@ -1,0 +1,15 @@
+.border-glow-card {
+  width: 100%;           /* Ensures the main wrapper fills the Grid item */
+  display: flex;         /* Allows internal centering */
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.border-glow-inner {
+  width: 100%;           /* Ensures the content container fills the card */
+  height: 100%;          /* Ensures it fills the height if you have a minHeight */
+  display: flex;
+  flex: 1;               /* Makes it grow to fill available space in the card */
+  z-index: 1;
+  position: relative;
+}

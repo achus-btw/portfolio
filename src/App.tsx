@@ -1,10 +1,9 @@
-import { useState } from 'react'
 import './App.css'
 import './Side.tsx'
-import { Paper, Button, Container, Box, Typography, Chip } from '@mui/material';
+import { Container } from '@mui/material';
 import ProfileCard from './Side.tsx';
+import DataPage from "./DataPages.tsx"
 function App() {
-  const [count, setCount] = useState(0)
   const bgCol1 = 'rgba(255,255,255,0.05)'
   const bgCol2 = 'rgba(255,255,255,0.05)'
   const mainText = "#fff"
@@ -25,18 +24,8 @@ function App() {
         }}
       >
         <ProfileCard bg1={bgCol1} bg2={bgCol2} textColor={mainText} highText={superText} />
-        <Paper
+        <DataPage bg1={bgCol1} bg2={bgCol2} textColor={mainText} highText={superText} />
 
-          elevation={3}
-          sx={{
-            bgcolor: bgCol1,
-            p: 3,
-            borderRadius: 3,
-            flexGrow: 3,
-          }}
-        >
-          <Button onClick={() => { setCount(count + 1) }}>{count}</Button>
-        </Paper>
 
       </Container>
     </>
