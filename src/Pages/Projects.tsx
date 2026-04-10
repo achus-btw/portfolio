@@ -89,9 +89,24 @@ export default function Projects({ bg1, textColor, highText }) {
             >
               {item.link.replace('https://', '')}
             </Typography>
-            <Stack direction={"row"} sx={{ gap: 2, pt: 2 }}>
+            <Stack
+              direction="row"
+              sx={{
+                gap: 2,
+                pt: 2,
+                flexWrap: 'wrap'
+              }}
+            >
               {item.fields.map((f, i) => (
-                <Chip variant='outlined' sx={{ color: textColor, '&:hover': { color: highText, transition: '0.5s' } }} label={f} />
+                <Chip
+                  key={i} // Ensure you have a key for list items
+                  variant='outlined'
+                  sx={{
+                    color: textColor,
+                    '&:hover': { color: highText, transition: '0.5s' }
+                  }}
+                  label={f}
+                />
               ))}
             </Stack>
           </Paper>
