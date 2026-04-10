@@ -1,11 +1,38 @@
-import { Paper, Box, Typography, Chip, Divider } from '@mui/material';
+import { Paper, Box, Typography, Chip, Divider,Stack} from '@mui/material';
 import image from './assets/me.jpeg'
 const name = "Aswin Uday"
 const label = "Electronics Engineer"
 import FolderList from "./MainInfo.tsx"
+import { keyframes } from '@mui/system';
+const shimmer = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    /* This must match your background-size percentage to loop perfectly */
+    background-position: 400% 50%;
+  }
+`;
+
+const rainbowTextStyle = {
+  fontWeight: 'bold',
+  background: `linear-gradient(
+    90deg,
+    #ff0000, #ff4000, #ff8000, #ffbf00, #ffff00, #bfff00, #80ff00, 
+    #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #4b0082, #8b00ff,
+    #ff0000, /* Pivot Point */
+    #8b00ff, #4b0082, #0000ff, #0080ff, #00ffff, #00ff80, #00ff00, 
+    #80ff00, #bfff00, #ffff00, #ffbf00, #ff8000, #ff4000, #ff0000
+  )`,
+  backgroundSize: '400% 100%',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  animation: `${shimmer} 20s linear infinite`, // Increased time because the gradient is now twice as long
+};
 const ProfileCard = ({ bg1, bg2, textColor, highText }) => {
   return (
-    <Paper
+   <Stack >
+   <Paper
       elevation={3}
       sx={{
         bgcolor: bg1,
@@ -80,6 +107,36 @@ const ProfileCard = ({ bg1, bg2, textColor, highText }) => {
 
       <FolderList bg={bg1} text={highText} textMuted={'white'} />
     </Paper>
+    <Paper
+  elevation={3}
+  sx={{
+    flex: 1,
+    bgcolor: 'grey.900', // Assuming a dark bg for better contrast
+    mt: 2,
+    p: 2,
+    borderRadius: 3,
+    width: { xs: '100%', md: 250 },
+    boxSizing: 'border-box',
+  }}
+>
+  <Typography variant="h6" gutterBottom sx={rainbowTextStyle}>
+    displayPortfolio.sh
+  </Typography>
+  
+  <Typography variant="body2" sx={{ ...rainbowTextStyle, opacity: 1, lineHeight: 1.6 }}>
+    Synthesizing link arrays... 
+    Configuring buffer-stream 0x8F22. 
+    Redistributing logic-grid nodes for 
+    optimized packet-shunting.<br/> 
+    Status: Nominal.
+  </Typography>
+  
+  <Typography variant="caption" display="block" sx={{ ...rainbowTextStyle, mt: 2, fontStyle: 'italic' }}>
+    Rendering Load: 0.442rCycles
+  </Typography>
+    </Paper>
+
+</Stack>
   );
 };
 
