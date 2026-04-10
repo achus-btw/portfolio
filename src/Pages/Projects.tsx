@@ -1,5 +1,5 @@
 import { Box, Paper, Typography, Stack, Chip } from '@mui/material';
-import { Masonry } from '@mui/lab';
+import { useEffect, useState } from 'react';
 
 const data = [
   {
@@ -22,15 +22,28 @@ const data = [
     status: "WIP",
     desc: "this a an attempt at making a drone system from scratch including the flight controll logic drivers",
     fields: ["embedded programming", "robotic", "control systems"]
+  },
+  {
+    name: "fully custom os",
+    link: "https://github.com/achus-btw/basicOs_dev.git",
+    status: "WIP",
+    desc: "building a fully custom operating system from the ground up to learn systems programming and barebone system development",
+    fields: ["c programming", "low level systems", "systems programming"]
   }
 ];
 
 export default function Projects({ bg1, textColor, highText }) {
   const muted = "rgb(200,200,200)";
 
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   return (
     <Box sx={{ width: '100%', p: 2 }}>
-      <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
+      <Box sx={{
+        columnCount: { xs: 1, sm: 2, md: 3 },
+        columnGap: 2,
+        '& > *': { breakInside: 'avoid', marginBottom: 2 }
+      }}>
         {data.map((item, index) => (
           <Paper
             key={index}
@@ -111,7 +124,7 @@ export default function Projects({ bg1, textColor, highText }) {
             </Stack>
           </Paper>
         ))}
-      </Masonry>
+      </Box>
     </Box>
   );
 }
