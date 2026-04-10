@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.14.1",
     "@lottiefiles/dotlottie-react": "^0.18.10",
     "@mui/icons-material": "^9.0.0",
+    "@mui/lab": "^9.0.0-beta.2",
     "@mui/material": "^9.0.0",
     "@splinetool/react-spline": "^4.1.0",
     "date-fns": "^4.1.0",

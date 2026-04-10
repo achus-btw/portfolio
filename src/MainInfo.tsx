@@ -3,6 +3,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import SchoolIcon from '@mui/icons-material/School';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import CallIcon from '@mui/icons-material/Call';
+import { LinkedIn } from '@mui/icons-material';
 const FolderList = ({ text, textMuted, bg }) => {
   const items = [
     {
@@ -18,6 +19,14 @@ const FolderList = ({ text, textMuted, bg }) => {
       date: 'View Projects',
       icon: <GitHubIcon />,
       url: 'https://github.com/achus-btw?tab=repositories'
+    }, {
+
+
+      id: 3,
+      label: 'LinkedIn',
+      date: 'Aswin Uday',
+      icon: <LinkedIn />,
+      url: 'https://www.linkedin.com/in/aswinuday05'
     },
     {
       id: 3,
@@ -42,7 +51,7 @@ const FolderList = ({ text, textMuted, bg }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'transparent', p: 2, borderRadius: 2 }}>
+    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'transparent', p: 1, borderRadius: 2 }}>
       <Stack spacing={2}>
         {items.map((item) => (
           <Stack
@@ -54,7 +63,7 @@ const FolderList = ({ text, textMuted, bg }) => {
             sx={{
               bgcolor: bg,
               borderRadius: 3,
-              p: 2,
+              p: 1.5,
               overflow: 'hidden',
               cursor: 'pointer', // Makes it look clickable
               transition: 'transform 0.2s, opacity 0.2s',
