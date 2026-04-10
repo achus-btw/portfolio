@@ -11,12 +11,14 @@ const ProfileCard = ({ bg1, bg2, textColor, highText }) => {
         bgcolor: bg1,
         p: 3,
         borderRadius: 3,
-        flexGrow: 1,
-        maxWidth: 250,
+        width: { xs: '100%', md: 250 },
+        boxSizing: 'border-box',
+        flexShrink: 0,
         display: "flex",
         gap: 2,
         flexDirection: 'column',
         alignItems: 'center',
+        overflow: 'hidden'
       }}
     >
       <Box

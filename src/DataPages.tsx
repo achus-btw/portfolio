@@ -7,7 +7,9 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
   const items = [
     "hello",
     "hi",
-    "incredible"
+    "incredible",
+    "moshi moshi",
+    "konohawa"
   ]
   const pages = [
     {
@@ -15,8 +17,8 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
       'title': "About Me",
       'data': (
         <>
-          <Stack direction={"row"}>
-            <Typography sx={{ color: textColor, width: "70%" }}>
+          <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
+            <Typography sx={{ color: textColor, width: { xs: "100%", md: "70%" } }}>
               I am an Electronics and Communication Engineering student at the College of Engineering,
               Trivandrum, with a deep-seated interest in the intersection of low-level hardware and high-performance software.<br />
               <br />My work primarily focuses on embedded systems, digital signal processing, and robotics, ranging from
@@ -26,7 +28,7 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
               indigenous technology for defense research, with a specific focus on autonomous flight dynamics and mesh communication
               systems.<br /><br />
             </Typography>
-            <Box sx={{ width: '40%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Box sx={{ width: { xs: "100%", md: '40%' }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Typography
                 variant="h4"
                 sx={{
@@ -41,7 +43,7 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
               </Typography>
             </Box>
           </Stack>
-          <Typography variant='h5' sx={{ color: highText, width: "70%" }}>
+          <Typography variant='h5' sx={{ color: highText, width: { xs: "100%", md: "70%" }, mt: 2 }}>
             Fields I Dabble In
           </Typography>
           <Grid container spacing={2}>
@@ -49,28 +51,8 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
               <Grid
                 key={index}
                 size={{ xs: 12, sm: 6, md: 4 }}
-                sx={{ display: 'flex' }} // Forces the Grid cell to behave like a flex container
-              >
-                <BorderGlow
-                  className="full-width-glow" // Use a class to target the width
-                  style={{ width: '100%' }}    // Pass width directly to the cardRef div
-                >
-                  <Box
-                    sx={{
-                      width: '100%',
-                      minHeight: 100,
-                      display: "flex",
-                      justifyContent: 'center',
-                      alignItems: "center",
-                      p: 2,
-                      boxSizing: 'border-box'
-                    }}
-                  >
-                    <Typography sx={{ color: textColor, textAlign: 'center' }}>
-                      {item}
-                    </Typography>
-                  </Box>
-                </BorderGlow>
+                sx={{ display: 'flex' }}>
+                {item}
               </Grid>
             ))}
           </Grid>
@@ -81,22 +63,29 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
       id: 1,
       'title': "Resume",
       'data': (
-        <Typography>go back</Typography>
+        <Typography sx={{ color: textColor }}>go back</Typography>
       )
     },
     {
       id: 2,
       'title': "video",
       'data': (
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&modestbranding=1"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+        <Box sx={{ width: '100%', position: 'relative', pt: '56.25%' }}>
+          <iframe
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              border: 0
+            }}
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&modestbranding=1"
+            title="YouTube video player"
+            allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          >
+          </iframe>
+        </Box>
       )
     }
   ]
@@ -106,13 +95,13 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
       elevation={3}
       sx={{
         bgcolor: bg1,
-        p: 3,
+        p: { xs: 2, md: 3 },
         borderRadius: 3,
         flexGrow: 3,
       }}
     >
       <Stack
-        direction={'row'}
+        direction={{ xs: 'column', md: 'row' }}
         sx={{ gap: 2 }}
       >
         <Typography variant='h3' sx={{ color: highText }}>
@@ -122,12 +111,13 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
         <Stack
           direction={'row'}
           sx={{
-            width: "50%",
+            width: { xs: "100%", md: "50%" },
             maxHeight: 60,
             height: 'fit-content',
             alignSelf: 'center',
             bgcolor: highText,
-            borderRadius: 4
+            borderRadius: 4,
+            overflowX: 'auto'
           }}
           divider={
             <Box
@@ -147,7 +137,8 @@ const DataPage = ({ bg1, bg2, textColor, highText }) => {
               sx={{
                 color: 'white',
                 flex: 1,
-                py: 1.5
+                py: 1.5,
+                fontSize: { xs: '0.75rem', sm: '0.875rem' }
               }}
               onClick={() => { setState(item.id) }}
             >

@@ -1,6 +1,6 @@
 import './App.css'
 import './Side.tsx'
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 import ProfileCard from './Side.tsx';
 import DataPage from "./DataPages.tsx"
 function App() {
@@ -11,25 +11,27 @@ function App() {
 
   return (
     <>
-      <Container
-        maxWidth={false}
+      <Box
         sx={{
-          p: 3,
+          p: { xs: 2, md: 3 },
           bgcolor: "rgb(10,20,30)",
           minHeight: "100vh",
           display: "flex",
-          flexDirection: "row",
-          gap: 2
-
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: 2,
+          width: '100%',
+          boxSizing: 'border-box',
+          overflowX: 'hidden'
         }}
       >
         <ProfileCard bg1={bgCol1} bg2={bgCol2} textColor={mainText} highText={superText} />
         <DataPage bg1={bgCol1} bg2={bgCol2} textColor={mainText} highText={superText} />
 
 
-      </Container>
+      </Box>
     </>
   );
 }
 
 export default App
+
