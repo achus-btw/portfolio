@@ -28,13 +28,15 @@ const DataPage = ({ bg1, textColor, highText }) => {
   ]
   return (
     <Paper
-
       elevation={3}
       sx={{
         bgcolor: bg1,
         p: { xs: 2, md: 3 },
         borderRadius: 3,
         flexGrow: 3,
+        width: '100%',
+        minWidth: 0,
+        overflow: 'hidden',
       }}
     >
       <Stack

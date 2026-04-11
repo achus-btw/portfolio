@@ -38,11 +38,11 @@ export default function Projects({ bg1, textColor, highText }) {
   const [ready, setReady] = useState(false);
   useEffect(() => setReady(true), []);
   return (
-    <Box sx={{ width: '100%', p: 2 }}>
+    <Box sx={{ maxWidth: '100%', p: 2, overflow: 'hidden', minWidth: 0 }}>
       <Box sx={{
-        columnCount: { xs: 1, sm: 2, md: 3 },
-        columnGap: 2,
-        '& > *': { breakInside: 'avoid', marginBottom: 2 }
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr  1fr' },
+        gap: 2,
       }}>
         {data.map((item, index) => (
           <Paper
@@ -62,18 +62,21 @@ export default function Projects({ bg1, textColor, highText }) {
               cursor: 'pointer',
               border: `1px solid ${highText}22`,
               transition: '0.3s',
+              minWidth: 0,        // ← add
+              overflow: 'hidden', // ← add
+              width: '100%',      // ← add
+              boxSizing: 'border-box', // ← add
               '&:hover': {
                 border: `1px solid ${highText}`,
                 transform: 'translateY(-2px)',
               },
             }}
           >
-            <Stack direction={'row'} sx={{ gap: 2, }}>
-
-              <Typography variant='h6' sx={{ color: textColor }}>
+            <Stack direction={'row'} sx={{ gap: 1, flexWrap: 'wrap', alignItems: 'center' }}>
+              <Typography variant='h6' sx={{ color: textColor, wordBreak: 'break-word' }}>
                 {item.name}
               </Typography>
-              <Chip label={item.status} sx={{ bgcolor: item.status == "completed" ? 'lightgreen' : highText, color: textColor }} />
+              <Chip label={item.status} sx={{ bgcolor: item.status == "completed" ? 'lightgreen' : highText, color: textColor, flexShrink: 0 }} />
             </Stack>
 
             <Typography variant='body2' sx={{ color: muted, mt: 0.5 }}>
