@@ -25,10 +25,10 @@ const data = [
   },
   {
     name: "fully custom os",
-    link: "https://github.com/achus-btw/basicOs_dev.git",
+    link: "https://github.com/achus-btw/basicCustomOs.git",
     status: "WIP",
     desc: "building a fully custom operating system from the ground up to learn systems programming and barebone system development",
-    fields: ["c programming", "low level systems", "systems programming"]
+    fields: ["c programming", "assembly", "low level systems", "systems programming"]
   }
 ];
 
@@ -112,7 +112,7 @@ export default function Projects({ bg1, textColor, highText }) {
             >
               {item.fields.map((f, i) => (
                 <Chip
-                  key={i} // Ensure you have a key for list items
+                  key={i}
                   variant='outlined'
                   sx={{
                     color: textColor,
